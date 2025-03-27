@@ -1,0 +1,41 @@
+<div class="main-content">
+	<div class="d-flex flex-column w-25">
+	  <h2>Signup Page</h2>
+	  
+	  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="d-flex flex-column">
+		<input type="text" formControlName="name" placeholder="Name" class="m-1 p-2">
+		<div *ngIf="signupForm.get('name')?.invalid && signupForm.get('name')?.touched">
+		  <small class="text-danger mx-1">Name is required (min 3 characters)</small>
+		</div>
+  
+		<input type="date" formControlName="dob" placeholder="Date of birth" class="m-1 p-2" [max]="maxDate">
+		<div *ngIf="signupForm.get('dob')?.invalid && signupForm.get('dob')?.touched">
+		  <small class="text-danger mx-1">Date of Birth is required</small>
+		</div>
+  
+		<input type="text" formControlName="mobile" placeholder="Mobile" class="m-1 p-2">
+		<div *ngIf="signupForm.get('mobile')?.invalid && signupForm.get('mobile')?.touched">
+		  <small class="text-danger mx-1">Enter a valid 10-digit mobile number</small>
+		</div>
+  
+		<input type="email" formControlName="email" placeholder="Email address" class="m-1 p-2">
+		<div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
+		  <small class="text-danger mx-1">Enter a valid email address</small>
+		</div>
+  
+		<input type="password" formControlName="password" placeholder="Create new password" class="m-1 p-2">
+		<div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched">
+		  <small class="text-danger mx-1">Password must be at least 6 characters</small>
+		</div>
+  
+		<input type="password" formControlName="confirmPassword" placeholder="Confirm password" class="m-1 p-2">
+		<div *ngIf="signupForm.errors?.['notMatching'] && signupForm.get('confirmPassword')?.touched">
+		  <small class="text-danger mx-1">Passwords do not match</small>
+		</div>
+  
+		<button type="submit" class="btn btn-secondary py-1 w-50 mx-auto my-3" [disabled]="signupForm.invalid">
+		  Submit
+		</button>
+	  </form>
+	</div>  
+  </div>  

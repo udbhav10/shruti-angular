@@ -1,0 +1,14 @@
+<div class="main-content">
+  <div class="d-flex flex-column w-25">
+    <h2>Login Page</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <input type="text" formControlName="username" placeholder="Username" class="m-1 p-2 w-100">
+      <input type="password" formControlName="password" placeholder="Password" class="m-1 p-2 w-100">
+      <div class="d-flex justify-content-between m-1">
+        <button type="submit" class="btn btn-secondary py-1" style="width: 48%;">Login</button>
+        <button type="button" class="btn btn-secondary py-1" style="width: 48%;" routerLink="/signup">Sign Up</button>
+      </div>
+    </form>
+    <p *ngIf="loginMessage" class="m-1 text-danger">{{ loginMessage }}</p>
+  </div>
+</div>
