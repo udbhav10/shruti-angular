@@ -38,9 +38,12 @@ export class LoginComponent {
   
       if (credentials[username] && credentials[username] === password) {
         this.loginMessage = 'Login successful!';
+
+        sessionStorage.setItem('isLoggedIn', 'true');
+        sessionStorage.setItem('username', username);
         
         // Redirect to tournament-setup
-        this.router.navigate(['/tournament-setup']);
+        this.router.navigate(['/manage-tournament']);
       } else {
         this.loginMessage = 'Invalid username or password.';
       }

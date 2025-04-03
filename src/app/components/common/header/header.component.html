@@ -19,14 +19,19 @@
           </li>
         </ng-container>
       </ul>
-      <span 
-        class="material-symbols-outlined"
-        style="cursor: pointer;" 
-        (click)="logout()"
-        aria-current="page" 
-      >
-        logout
-      </span>
+      <div class="d-flex">
+        <span class="me-3">
+          Hi, {{ username }}
+        </span>
+        <span 
+          class="material-symbols-outlined"
+          style="cursor: pointer;" 
+          (click)="logout()"
+          aria-current="page" 
+        >
+          logout
+        </span>
+      </div>
     </div>
   </div>
 </nav>

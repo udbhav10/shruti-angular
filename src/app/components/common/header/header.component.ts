@@ -11,11 +11,12 @@ import { RouterModule } from '@angular/router';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit {
-  @Input() activeTab: string = 'tournament-setup';
+  @Input() activeTab: string = 'manage-tournament';
+  username: string | null = null;
   tabs = [
     {
-      "displayName": "Tournament Setup",
-      "route": "tournament-setup"
+      "displayName": "Manage Tournament",
+      "route": "manage-tournament"
     },
     {
       "displayName": "Team Setup",
@@ -30,10 +31,19 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router) {  }
 
   ngOnInit() {
-
+    if (typeof window !== 'undefined' && sessionStorage) {      
+      const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+      if (isLoggedIn) {
+        this.username = sessionStorage.getItem('username');
+      }
+    }
   }
 
   logout() {
+
+    sessionStorage.removeItem('isLoggedIn');
+    sessionStorage.removeItem('username');
+
     this.router.navigate(['/']);
   }  
 

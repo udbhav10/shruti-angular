@@ -1,0 +1,15 @@
+<app-header 
+    [activeTab]="'manage-tournament'" 
+></app-header>
+
+<div class="h-100 w-100 p-5">
+    <ng-container *ngIf="mode == 'setup'">
+        <app-tournament-setup></app-tournament-setup>
+    </ng-container>
+    <ng-container *ngIf="mode == 'add'">
+        <app-add-tournament></app-add-tournament>
+    </ng-container>
+    <ng-container *ngIf="mode == 'view'">
+        <app-view-tournament></app-view-tournament>
+    </ng-container>
+</div>

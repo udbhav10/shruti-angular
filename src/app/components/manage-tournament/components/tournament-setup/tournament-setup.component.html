@@ -1,0 +1,50 @@
+<div class="header-container">
+    <h2 class="title">Tournament Setup</h2>
+    
+    <div class="actions">
+        <!-- Styled Search Input -->
+        <input type="text" class="search-input" placeholder="Search tournaments">
+        
+        <!-- Styled Button -->
+        <button class="add-btn">
+            <span>+ Add Tournament</span>
+        </button>
+    </div>
+</div>
+
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Tournament Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.name }} </mat-cell>
+    </ng-container>
+  
+    <!-- Start Date Column -->
+    <ng-container matColumnDef="startDate">
+      <mat-header-cell *matHeaderCellDef> Start Date </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.startDate | dateFormat }} </mat-cell>
+    </ng-container>
+  
+    <!-- End Date Column -->
+    <ng-container matColumnDef="endDate">
+      <mat-header-cell *matHeaderCellDef> End Date </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.endDate | dateFormat }} </mat-cell>
+    </ng-container>
+  
+    <!-- Action Column (Delete Button) -->
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-icon-button color="warn">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+  
+    <!-- Table Header & Rows -->
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  
+  </mat-table>
+  

@@ -18,7 +18,7 @@ export class SignupComponent {
 
   constructor(private fb: FormBuilder, private router: Router) {
     this.signupForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(3)]],
+      username: ['', [Validators.required, Validators.minLength(3)]],
       dob: ['', Validators.required],
       mobile: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
       email: ['', [Validators.required, Validators.email]],
@@ -50,9 +50,9 @@ export class SignupComponent {
 
   onSubmit() {
     if (this.signupForm.valid) {
-      const { email, password } = this.signupForm.value;
+      const { username, password } = this.signupForm.value;
       const existingCookie = this.getCookie('userCredentials') || {};
-      const updatedCookie = { ...existingCookie, [email]: password };
+      const updatedCookie = { ...existingCookie, [username]: password };
       this.setCookie('userCredentials', updatedCookie, 7); // Stores for 7 days
       this.router.navigate(['/']);
       console.log('Form Submitted', this.signupForm.value);
